@@ -144,7 +144,7 @@
     });
     const last = pts[pts.length - 1].split(",");
     return `<svg class="ov-spark" viewBox="0 0 ${w} ${h}">` +
-      `<polyline points="${pts.join(" ")}"></polyline>` +
+      `<polyline fill="none" points="${pts.join(" ")}"></polyline>` +
       `<circle cx="${last[0]}" cy="${last[1]}" r="2.5"></circle></svg>`;
   }
   function goToSummary(index) {
