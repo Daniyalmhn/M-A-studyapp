@@ -36,6 +36,7 @@
     user = name;
     $("#gate").hidden = true;
     $("#app").hidden = false;
+    window.scrollTo(0, 0);
     $("#user-name").textContent = name;
     ensureBoardEntry(name);
     renderAll();

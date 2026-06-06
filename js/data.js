@@ -310,7 +310,33 @@ const FLASHCARDS = [
   { front: "Why does ESG matter in M&A?", back: "Regulation, investor/lender expectations and reputation affect cash flows, cost of capital and exit multiple; ESG can be a premium or a price chip." },
   { front: "Where does ESG appear in the deal cycle?", back: "Everywhere: screening, ESG due diligence, valuation, SPA (warranties/indemnities) and PMI." },
   { front: "What is PMI and why crucial?", back: "Post-Merger Integration — most synergy value is realised (or lost) after closing via the 100-day plan, people, systems and synergy capture." },
-  { front: "Common causes of M&A failure", back: "Over-paying, over-estimated synergies, weak integration, loss of key people and culture clash." }
+  { front: "Common causes of M&A failure", back: "Over-paying, over-estimated synergies, weak integration, loss of key people and culture clash." },
+  { front: "Share deal vs. asset deal?", back: "Share deal: buy the legal entity (all assets & liabilities follow). Asset deal: cherry-pick specific assets/liabilities — often better for the buyer on liability/tax, but harder to transfer." },
+  { front: "Horizontal / vertical / conglomerate merger?", back: "Horizontal: same industry & stage (a competitor). Vertical: different stage of the supply chain (supplier/customer). Conglomerate: unrelated businesses." },
+  { front: "What is a control premium?", back: "The extra amount paid above the market price to obtain control. It is reflected in transaction (precedent) multiples but NOT in trading multiples." },
+  { front: "What is goodwill?", back: "Goodwill = purchase price − fair value of net identifiable assets acquired. It sits on the buyer's balance sheet and is tested for impairment." },
+  { front: "Accretion vs. dilution?", back: "A deal is EPS-accretive if it raises the acquirer's earnings per share, dilutive if it lowers it — a common first screen for listed acquirers." },
+  { front: "What is a hostile takeover?", back: "An acquisition opposed by the target's board, taken directly to shareholders (e.g. via a tender offer)." },
+  { front: "What is a poison pill?", back: "A takeover defence letting existing shareholders buy cheap shares to dilute a hostile bidder, making the takeover prohibitively expensive." },
+  { front: "What is a white knight?", back: "A friendlier third-party acquirer the target invites to outbid a hostile bidder." },
+  { front: "What is a tender offer?", back: "A public offer to buy shareholders' shares directly, usually at a premium, to gain control." },
+  { front: "Vendor due diligence (VDD)?", back: "Due diligence commissioned by the seller and shared with bidders to speed up the auction and support the price." },
+  { front: "What is a data room?", back: "A secure (virtual) repository where the seller shares confidential documents for buyers' due diligence." },
+  { front: "Escrow / holdback?", back: "Part of the purchase price retained (e.g. in escrow) to cover potential warranty/indemnity claims after closing." },
+  { front: "W&I insurance?", back: "Warranty & Indemnity insurance shifts the risk of warranty breaches to an insurer — common in auctions / PE 'clean exits'." },
+  { front: "Drag-along vs. tag-along rights?", back: "Drag-along: the majority can force minorities to sell on the same terms. Tag-along: minorities can join a sale on the same terms." },
+  { front: "Break fee (and reverse break fee)?", back: "A fee the target pays the buyer if the deal collapses for specified reasons; a reverse break fee is paid by the buyer to the target." },
+  { front: "Merger control / antitrust?", back: "Competition-authority approval needed when a deal may harm competition — a key condition precedent that can block or impose remedies." },
+  { front: "What is net working capital (NWC)?", back: "Operating current assets − operating current liabilities. A 'normal' NWC target is agreed; deviations adjust the price (completion accounts)." },
+  { front: "What is a carve-out?", back: "Selling a business unit/subsidiary out of a larger group; it needs operational separation, often via a TSA." },
+  { front: "What is a TSA?", back: "Transitional Services Agreement — the seller provides services (IT, HR, finance) to a carved-out business for a transition period post-closing." },
+  { front: "Bolt-on / buy-and-build?", back: "Smaller add-on acquisitions made by a platform company to build scale — a core PE value-creation strategy." },
+  { front: "What is the 'equity story'?", back: "The narrative of why a company is an attractive investment (growth, margins, position) — central to the IM and the sale." },
+  { front: "PE exit routes?", back: "Trade sale (to a strategic), secondary buyout (to another PE fund), or IPO. Dividend recaps can also return cash before exit." },
+  { front: "Senior vs. mezzanine debt?", back: "Senior: first priority, secured, cheapest. Mezzanine/subordinated: junior, more expensive, often with equity-like upside (warrants)." },
+  { front: "Standalone vs. synergy value?", back: "Standalone = the target on its own. Synergy value = extra value from the combination. Max price ≈ standalone + synergies; pay less to keep value for yourself." },
+  { front: "Comparable companies vs. precedent transactions?", back: "Comps: multiples of similar listed firms (no control premium). Precedents: multiples paid in past deals (include a control premium)." },
+  { front: "Leverage ratio vs. DSCR?", back: "Leverage = Net Debt / EBITDA (how much debt). DSCR = cash available / debt service (ability to service it). Lenders cap both." }
 ];
 
 /* ----------------------------------------------------------
@@ -414,6 +440,210 @@ const MCQ = [
     ],
     correct: [0, 2],
     explain: "ESG affects value (cost of capital, multiple) and is embedded across DD, the SPA and price; weak ESG can be a chip or even a deal-breaker."
+  },
+  {
+    q: "Which TWO statements about a SHARE deal vs. an ASSET deal are correct?",
+    options: [
+      "In a share deal the buyer acquires the legal entity with all its assets and liabilities.",
+      "An asset deal lets the buyer cherry-pick specific assets and liabilities.",
+      "A share deal always isolates the buyer from the target's historical liabilities.",
+      "Asset deals are always simpler and faster to execute than share deals.",
+      "In an asset deal the buyer must assume every liability of the seller."
+    ],
+    correct: [0, 1],
+    explain: "Share deal = the whole entity (liabilities follow). Asset deal = pick assets/liabilities. Share deals do NOT shield the buyer from history, and asset deals are often more complex to transfer."
+  },
+  {
+    q: "Which TWO are typical TARGET defences against a hostile takeover?",
+    options: ["Poison pill", "White knight", "Vendor due diligence", "Locked box", "Dividend reinvestment plan"],
+    correct: [0, 1],
+    explain: "The poison pill and inviting a white knight are classic takeover defences. The others are unrelated process/price tools."
+  },
+  {
+    q: "Which TWO statements about WACC / cost of capital are correct?",
+    options: [
+      "WACC uses the after-tax cost of debt.",
+      "Cost of equity can be estimated with CAPM: rf + β × equity risk premium.",
+      "Higher leverage always lowers WACC without limit.",
+      "WACC is independent of the company's capital structure.",
+      "The cost of debt is normally higher than the cost of equity."
+    ],
+    correct: [0, 1],
+    explain: "WACC uses the after-tax cost of debt and CAPM gives the cost of equity. Beyond a point more debt raises risk/WACC, WACC depends on structure, and debt is normally cheaper than equity."
+  },
+  {
+    q: "Which TWO items INCREASE equity value in the EV→Equity bridge?",
+    options: ["Surplus / non-operating assets", "Freely available cash", "Financial debt", "Pension deficit", "Minority interests"],
+    correct: [0, 1],
+    explain: "Surplus assets and free cash add to equity value; debt, pension deficits and minorities are deducted."
+  },
+  {
+    q: "Which TWO are valid private-equity EXIT routes?",
+    options: ["Trade sale to a strategic buyer", "Secondary buyout to another PE fund", "Poison pill", "Vendor due diligence", "Locked box"],
+    correct: [0, 1],
+    explain: "Trade sale and secondary buyout (plus IPO) are exit routes. The others are defences/process tools."
+  },
+  {
+    q: "Which TWO statements about multiples and the control premium are correct?",
+    options: [
+      "Precedent-transaction multiples typically include a control premium.",
+      "Trading comparable multiples exclude a control premium.",
+      "A control premium is the discount applied to a minority stake.",
+      "Trading comps normally include a control premium.",
+      "Control premiums apply only to asset deals."
+    ],
+    correct: [0, 1],
+    explain: "Deals pay for control, so precedents embed a premium; listed trading comps do not."
+  },
+  {
+    q: "Which TWO mechanisms protect a BUYER against risks discovered after closing?",
+    options: ["Escrow / holdback of part of the price", "Warranties & indemnities in the SPA", "A teaser", "An equity story", "A data room"],
+    correct: [0, 1],
+    explain: "Escrow and SPA warranties/indemnities give post-closing recourse. Teaser, equity story and data room are process/marketing items."
+  },
+  {
+    q: "Which TWO statements about synergies and price are correct?",
+    options: [
+      "Maximum justifiable price ≈ standalone value + synergies.",
+      "Net synergies = gross synergies − costs to achieve.",
+      "Paying the full synergy value keeps all the gains for the buyer.",
+      "Revenue synergies are generally more certain than cost synergies.",
+      "Costs to achieve synergies increase net synergies."
+    ],
+    correct: [0, 1],
+    explain: "Max price is standalone + synergies, and you net off costs to achieve. Paying full synergies hands the gains to the seller; revenue synergies are LESS certain."
+  },
+  {
+    q: "Which TWO are common conditions precedent (CPs) between signing and closing?",
+    options: [
+      "Merger-control / antitrust approval",
+      "Key third-party / change-of-control consents",
+      "Drafting the teaser",
+      "Paying the final dividend to the buyer",
+      "Writing the equity story"
+    ],
+    correct: [0, 1],
+    explain: "Regulatory approval and necessary consents are classic CPs; the others are not closing conditions."
+  },
+  {
+    q: "Which TWO statements about LBO value creation are correct?",
+    options: [
+      "Debt paydown (deleveraging) increases equity value over time.",
+      "Multiple expansion raises exit value for the same EBITDA.",
+      "Leverage reduces the equity IRR for a given return on assets.",
+      "EBITDA growth has no effect on equity value.",
+      "Exiting at a lower multiple than entry boosts returns."
+    ],
+    correct: [0, 1],
+    explain: "Deleveraging and multiple expansion (plus EBITDA growth) drive LBO returns. Leverage amplifies (not reduces) equity returns; a lower exit multiple hurts."
+  },
+  {
+    q: "Which TWO documents are typically NON-BINDING?",
+    options: ["Letter of Intent (LOI)", "Term sheet / MOU", "A signed SPA", "The disclosure letter", "An escrow agreement"],
+    correct: [0, 1],
+    explain: "LOIs and term sheets/MOUs are usually non-binding (save confidentiality/exclusivity). The SPA, disclosure letter and escrow agreement are binding."
+  },
+  {
+    q: "Which TWO statements about net working capital (NWC) in a deal are correct?",
+    options: [
+      "A normalised NWC target is agreed; deviations adjust the price.",
+      "NWC = operating current assets − operating current liabilities.",
+      "NWC is part of net debt.",
+      "Higher-than-target NWC at closing reduces the price paid to the seller.",
+      "NWC is irrelevant under completion accounts."
+    ],
+    correct: [0, 1],
+    explain: "A target NWC is set and deviations flex the price; NWC is current assets minus current liabilities. It is separate from net debt, and being ABOVE target benefits the seller."
+  },
+  {
+    q: "Which TWO statements about ESG due diligence are correct?",
+    options: [
+      "It can surface environmental liabilities and supply-chain / labour risks.",
+      "Findings can become SPA warranties / indemnities or a price chip.",
+      "ESG is only relevant for listed acquirers.",
+      "ESG risks can never be deal-breakers.",
+      "ESG is assessed only during post-merger integration."
+    ],
+    correct: [0, 1],
+    explain: "ESG DD finds environmental/social/governance risks that flow into the SPA and price; it applies to all acquirers and can be a deal-breaker, across the whole cycle."
+  },
+  {
+    q: "Which TWO statements about a carve-out are correct?",
+    options: [
+      "It separates a business unit from a larger group.",
+      "A Transitional Services Agreement often supports it after closing.",
+      "Carve-outs are always simpler than buying a standalone company.",
+      "The carved-out unit never needs IT/finance separation.",
+      "A carve-out is a takeover defence."
+    ],
+    correct: [0, 1],
+    explain: "Carve-outs detach a unit and usually need a TSA for shared functions — they are typically MORE complex, not less."
+  },
+  {
+    q: "Which TWO statements about IRR and money multiple are correct?",
+    options: [
+      "Money multiple ignores the time value of money.",
+      "For a fixed money multiple, a longer holding period lowers the IRR.",
+      "IRR ignores how long capital is invested.",
+      "A 2.0x money multiple always equals a 100% IRR.",
+      "MoM and IRR always rank deals identically."
+    ],
+    correct: [0, 1],
+    explain: "MoM is time-blind; the same MoM over more years means a lower annualised IRR. IRR is explicitly time-weighted, and MoM/IRR can disagree on ranking."
+  },
+  {
+    q: "Which TWO are EQUITY-value multiples (pair with post-interest metrics)?",
+    options: ["P / E", "P / B", "EV / EBITDA", "EV / Sales", "EV / EBIT"],
+    correct: [0, 1],
+    explain: "P/E and P/B are equity multiples; the EV-based ones are capital-structure neutral and pair with pre-interest metrics."
+  },
+  {
+    q: "Which TWO are frequent reasons M&A deals DESTROY value?",
+    options: [
+      "Overpaying / the winner's curse",
+      "Overestimated synergies and weak integration",
+      "Buying below standalone value",
+      "Realising cost synergies early",
+      "Retaining key talent"
+    ],
+    correct: [0, 1],
+    explain: "Overpayment and synergy/integration failure destroy value; the other three actually protect or create value."
+  },
+  {
+    q: "Which TWO statements about the LOCKED-BOX mechanism are correct?",
+    options: [
+      "The price is fixed at a past 'locked-box' balance-sheet date.",
+      "The seller is barred from value 'leakage' after that date (save permitted leakage).",
+      "The price is adjusted after closing for actual net debt.",
+      "It requires completion accounts to finalise the price.",
+      "The buyer bears all trading risk before the locked-box date."
+    ],
+    correct: [0, 1],
+    explain: "Locked box fixes the price at a historical date with a no-leakage covenant. Post-closing net-debt adjustment is the COMPLETION-ACCOUNTS alternative."
+  },
+  {
+    q: "Which TWO statements about due-diligence outcomes are correct?",
+    options: [
+      "Findings can reduce the price (a 'chip' on EV).",
+      "Findings can be covered by specific indemnities in the SPA.",
+      "DD findings never affect deal structure.",
+      "A clean DD guarantees synergies will be realised.",
+      "DD covers only financial matters; legal and tax are excluded."
+    ],
+    correct: [0, 1],
+    explain: "DD findings flow into price and SPA protections (and structure). They don't guarantee synergies, and DD spans financial, tax, legal, commercial, ESG and more."
+  },
+  {
+    q: "Which TWO statements about post-merger integration (PMI) are correct?",
+    options: [
+      "Most synergy value is realised — or lost — after closing.",
+      "A 100-day plan sets early priorities and quick wins.",
+      "Integration planning should start only a year after closing.",
+      "Culture is irrelevant to integration success.",
+      "Synergies are realised automatically once the deal signs."
+    ],
+    correct: [0, 1],
+    explain: "PMI is where value is won or lost; the 100-day plan drives it. Integration must be planned EARLY, culture is critical, and synergies are never automatic."
   }
 ];
 
@@ -487,6 +717,118 @@ const CALC = [
     unit: "m",
     hint: "Equity value = EV − net debt.",
     explain: "200 − 50 = 150m equity value."
+  },
+  {
+    q: "Cost of equity (CAPM). Risk-free rate = 2%, beta = 1.2, equity risk premium = 6%. What is the cost of equity (%)?",
+    answer: 9.2,
+    tolerance: 0.1,
+    unit: "%",
+    hint: "Ke = rf + β × ERP.",
+    explain: "Ke = 2% + 1.2 × 6% = 2% + 7.2% = 9.2%."
+  },
+  {
+    q: "WACC. Equity = 600m, Debt = 400m, cost of equity = 10%, cost of debt = 5%, tax = 25%. What is the WACC (%)?",
+    answer: 7.5,
+    tolerance: 0.1,
+    unit: "%",
+    hint: "WACC = (E/V)·Ke + (D/V)·Kd·(1−tax). V = 1000.",
+    explain: "0.6×10% + 0.4×5%×(1−0.25) = 6.0% + 1.5% = 7.5%."
+  },
+  {
+    q: "Free Cash Flow to the Firm. EBIT = 50m, tax = 20%, D&A = 15m, Capex = 20m, ΔNWC = 5m. What is FCFF (m)?",
+    answer: 30,
+    tolerance: 0.5,
+    unit: "m",
+    hint: "FCFF = EBIT×(1−tax) + D&A − Capex − ΔNWC.",
+    explain: "50×0.8 + 15 − 20 − 5 = 40 + 15 − 20 − 5 = 30m."
+  },
+  {
+    q: "Terminal value (Gordon growth). This year's FCFF = 20m, g = 3%, WACC = 9%. What is the terminal value (m)?",
+    answer: 343.33,
+    tolerance: 2,
+    unit: "m",
+    hint: "TV = FCFF×(1+g) / (WACC − g) — grow this year's FCFF by one year first.",
+    explain: "20 × 1.03 / (0.09 − 0.03) = 20.6 / 0.06 = 343.3m."
+  },
+  {
+    q: "Equity value via P/E. Net income = 8m, peer P/E multiple = 15×. What equity value (m) does it imply?",
+    answer: 120,
+    tolerance: 1,
+    unit: "m",
+    hint: "Equity value = P/E × net income.",
+    explain: "15 × 8 = 120m."
+  },
+  {
+    q: "EV/EBITDA to equity. EBITDA = 40m, multiple = 6.5×, net debt = 80m. What is the equity value (m)?",
+    answer: 180,
+    tolerance: 1,
+    unit: "m",
+    hint: "EV = multiple × EBITDA, then equity = EV − net debt.",
+    explain: "EV = 6.5 × 40 = 260m; equity = 260 − 80 = 180m."
+  },
+  {
+    q: "Bid premium. Unaffected share price = 40, offer price = 50. What is the premium offered (%)?",
+    answer: 25,
+    tolerance: 0.5,
+    unit: "%",
+    hint: "Premium = (offer − unaffected) / unaffected.",
+    explain: "(50 − 40) / 40 = 10 / 40 = 25%."
+  },
+  {
+    q: "LBO IRR from the money multiple. The investment returns a money multiple of 2.0× over a 4-year holding period. What is the approximate annual IRR (%)?",
+    answer: 18.9,
+    tolerance: 0.6,
+    unit: "%",
+    hint: "IRR = MoM^(1/years) − 1.",
+    explain: "2.0^(1/4) − 1 = 1.189 − 1 ≈ 18.9%."
+  },
+  {
+    q: "Value of synergies (perpetuity). Annual after-tax cost synergies = 6m, discount rate = 8%. What is their present value (m)?",
+    answer: 75,
+    tolerance: 1,
+    unit: "m",
+    hint: "PV of a perpetuity = cash flow / discount rate.",
+    explain: "6 / 0.08 = 75m."
+  },
+  {
+    q: "Goodwill. Purchase price (equity) = 200m, fair value of net identifiable assets = 140m. What goodwill (m) is recognised?",
+    answer: 60,
+    tolerance: 1,
+    unit: "m",
+    hint: "Goodwill = purchase price − fair value of net identifiable assets.",
+    explain: "200 − 140 = 60m of goodwill."
+  },
+  {
+    q: "Sponsor equity contribution. Enterprise Value = 150m, debt raised = 90m. What share of EV is funded by equity (%)?",
+    answer: 40,
+    tolerance: 0.5,
+    unit: "%",
+    hint: "Equity = EV − debt; then equity / EV.",
+    explain: "Equity = 150 − 90 = 60m; 60 / 150 = 40%."
+  },
+  {
+    q: "Enterprise value build-up. Equity value = 220m, net debt = 80m. What is the Enterprise Value (m)?",
+    answer: 300,
+    tolerance: 1,
+    unit: "m",
+    hint: "EV = equity value + net debt.",
+    explain: "220 + 80 = 300m."
+  },
+  {
+    q: "Net debt with several items. Bank loans = 50m, bonds = 70m, cash = 30m, pension deficit (debt-like) = 20m. What is net debt (m)?",
+    answer: 110,
+    tolerance: 1,
+    unit: "m",
+    hint: "Net debt = financial debt − cash + debt-like items.",
+    explain: "(50 + 70) − 30 + 20 = 120 − 30 + 20 = 110m."
+  },
+  {
+    q: "Pro-forma EPS (accretion test). Acquirer net income = 100m on 50m shares. It buys a target adding 20m of net income and issues 8m new shares. What is the combined EPS?",
+    answer: 2.07,
+    tolerance: 0.03,
+    unit: "",
+    hint: "Combined EPS = (NI_acq + NI_target) / (shares_acq + new shares).",
+    explain: "(100 + 20) / (50 + 8) = 120 / 58 = 2.07 — accretive vs. the standalone 2.00."
   }
 ];
 
