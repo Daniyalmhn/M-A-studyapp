@@ -832,5 +832,21 @@ const CALC = [
   }
 ];
 
+/* ----------------------------------------------------------
+   5. TOPICS  —  ranked by exam frequency for the Overview page.
+   summaryIndex points at the SUMMARY card to open when tapped.
+   spark = tiny trend series for the sparkline (decorative).
+   ---------------------------------------------------------- */
+const TOPICS = [
+  { title: "Valuation: DCF, WACC & multiples", priority: "High", cards: 14, summaryIndex: 5, spark: [4,5,5,7,8,9,11] },
+  { title: "EV ↔ Equity Value bridge & net debt", priority: "High", cards: 9, summaryIndex: 7, spark: [3,4,4,5,7,8,9] },
+  { title: "LBO, debt capacity & returns (IRR/MoM)", priority: "High", cards: 10, summaryIndex: 8, spark: [2,3,5,5,6,8,9] },
+  { title: "SPA: warranties, indemnities & risk allocation", priority: "High", cards: 9, summaryIndex: 10, spark: [3,3,4,6,6,7,8] },
+  { title: "The M&A process (8 phases) & key documents", priority: "Medium", cards: 11, summaryIndex: 2, spark: [4,4,5,5,6,6,7] },
+  { title: "Due diligence (incl. ESG)", priority: "Medium", cards: 8, summaryIndex: 9, spark: [2,3,3,4,5,6,7] },
+  { title: "Price mechanisms & earn-outs", priority: "Medium", cards: 6, summaryIndex: 11, spark: [3,3,4,4,5,5,6] },
+  { title: "Synergies, motives & post-merger integration", priority: "Medium", cards: 8, summaryIndex: 1, spark: [2,3,4,4,5,6,6] }
+];
+
 /* Make data available to app.js */
-window.MADATA = { SUMMARY, FLASHCARDS, MCQ, CALC };
+window.MADATA = { SUMMARY, FLASHCARDS, MCQ, CALC, TOPICS };

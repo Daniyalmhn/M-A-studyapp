@@ -30,7 +30,8 @@
     <header class="topbar">
       <div class="brand"><span class="brand-mark">M&amp;A</span> Study App</div>
       <nav class="tabs">
-        <button class="tab active" data-view="summary">Summary</button>
+        <button class="tab active" data-view="overview">Overview</button>
+        <button class="tab" data-view="summary">Summary</button>
         <button class="tab" data-view="flash">Flashcards</button>
         <button class="tab" data-view="quiz">MC Quiz</button>
         <button class="tab" data-view="calc">Calculations</button>
@@ -45,8 +46,44 @@
 
     <main class="content">
 
+      <!-- OVERVIEW -->
+      <section id="view-overview" class="view active">
+        <div class="ov-welcome">
+          <h2>Welcome back, <span id="ov-name">there</span></h2>
+          <p>Content from your M&amp;A course materials, organised for the exam.</p>
+        </div>
+
+        <div class="ov-stats">
+          <div class="ov-ring-wrap">
+            <svg class="ov-ring" viewBox="0 0 120 120">
+              <circle class="ov-ring-bg" cx="60" cy="60" r="52"></circle>
+              <circle id="ov-ring-fg" class="ov-ring-fg" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <div class="ov-ring-center">
+              <span id="ov-ring-pct" class="ov-ring-pct">0%</span>
+              <span class="ov-ring-label">Mastered</span>
+              <span id="ov-ring-sub" class="ov-ring-sub">0 / 0 cards</span>
+            </div>
+          </div>
+          <div class="ov-tiles">
+            <div class="ov-tile"><span id="ov-new" class="ov-tile-num">0</span><span class="ov-tile-lbl">New</span></div>
+            <div class="ov-tile amber"><span id="ov-learning" class="ov-tile-num">0</span><span class="ov-tile-lbl">Learning</span></div>
+            <div class="ov-tile green"><span id="ov-got" class="ov-tile-num">0</span><span class="ov-tile-lbl">Got it</span></div>
+            <div class="ov-tile blue"><span id="ov-fc" class="ov-tile-num">0</span><span class="ov-tile-lbl">Flashcards</span></div>
+            <div class="ov-tile blue"><span id="ov-mc" class="ov-tile-num">0</span><span class="ov-tile-lbl">MC questions</span></div>
+            <div class="ov-tile blue"><span id="ov-calc" class="ov-tile-num">0</span><span class="ov-tile-lbl">Calculations</span></div>
+          </div>
+        </div>
+
+        <div class="ov-topics-head">
+          <h3>Topics by exam frequency</h3>
+          <span class="ov-tap">Tap to study →</span>
+        </div>
+        <div id="ov-topics" class="ov-topics"></div>
+      </section>
+
       <!-- SUMMARY -->
-      <section id="view-summary" class="view active">
+      <section id="view-summary" class="view">
         <div class="view-head">
           <h2>Course Summary</h2>
           <p>Everything from the M&amp;A lecture, grouped by topic. Click a card to expand.</p>
@@ -72,7 +109,14 @@
             <span id="flash-counter" class="flash-counter">1 / 1</span>
             <button id="flash-next" class="btn-ghost">Next →</button>
           </div>
-          <button id="flash-shuffle" class="btn-ghost small">⤮ Shuffle</button>
+          <div class="flash-rate">
+            <button id="rate-learning" class="flash-rate-btn learning">↻ Still learning</button>
+            <button id="rate-got" class="flash-rate-btn got">✓ Got it</button>
+          </div>
+          <div class="flash-bottom">
+            <button id="flash-shuffle" class="btn-ghost small">⤮ Shuffle</button>
+            <span id="flash-status" class="flash-status"></span>
+          </div>
         </div>
       </section>
 

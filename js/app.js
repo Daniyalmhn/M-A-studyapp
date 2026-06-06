@@ -3,12 +3,13 @@
    ============================================================ */
 (function () {
   "use strict";
-  const { SUMMARY, FLASHCARDS, MCQ, CALC } = window.MADATA;
+  const { SUMMARY, FLASHCARDS, MCQ, CALC, TOPICS } = window.MADATA;
   const $  = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
   const LS_NAME  = "ma_user_name";
   const LS_BOARD = "ma_leaderboard";
+  const LS_CARDS = "ma_card_status";
   const MAX_MC   = MCQ.length * 2;        // 2 pts per MC question
   const MAX_CALC = CALC.length * 4;       // 4 pts per calculation
   const MAX_TOTAL = MAX_MC + MAX_CALC;
@@ -58,18 +59,118 @@
         $$(".view").forEach((s) => s.classList.remove("active"));
         $("#view-" + v).classList.add("active");
         if (v === "board") renderBoard();
+        if (v === "overview") renderOverview();
       });
     });
     $("#logout").addEventListener("click", logout);
+  }
+
+  /* ---------------- CARD STATUS (mastery) ---------------- */
+  function loadCardStatus() {
+    try { return JSON.parse(localStorage.getItem(LS_CARDS)) || {}; }
+    catch (e) { return {}; }
+  }
+  function saveCardStatus(m) { localStorage.setItem(LS_CARDS, JSON.stringify(m)); }
+  function getCardStatus(i) { return loadCardStatus()[i] || "new"; }
+  function setCardStatus(i, s) {
+    const m = loadCardStatus();
+    m[i] = s;
+    saveCardStatus(m);
+  }
+  function getCardCounts() {
+    const m = loadCardStatus();
+    let got = 0, learning = 0;
+    FLASHCARDS.forEach((_, i) => {
+      if (m[i] === "got") got++;
+      else if (m[i] === "learning") learning++;
+    });
+    const total = FLASHCARDS.length;
+    return { got, learning, neu: total - got - learning, total };
+  }
+
+  /* ---------------- OVERVIEW ---------------- */
+  const RING_CIRC = 2 * Math.PI * 52;
+  function renderOverview() {
+    $("#ov-name").textContent = user || "there";
+    const c = getCardCounts();
+    $("#ov-new").textContent = c.neu;
+    $("#ov-learning").textContent = c.learning;
+    $("#ov-got").textContent = c.got;
+    $("#ov-fc").textContent = FLASHCARDS.length;
+    $("#ov-mc").textContent = MCQ.length;
+    $("#ov-calc").textContent = CALC.length;
+    const pct = c.total ? Math.round((c.got / c.total) * 100) : 0;
+    $("#ov-ring-pct").textContent = pct + "%";
+    $("#ov-ring-sub").textContent = `${c.got} / ${c.total} cards`;
+    setRing(pct);
+    renderTopics();
+  }
+  function setRing(pct) {
+    const fg = $("#ov-ring-fg");
+    if (!fg) return;
+    fg.style.strokeDasharray = RING_CIRC;
+    fg.style.strokeDashoffset = RING_CIRC * (1 - pct / 100);
+  }
+  function renderTopics() {
+    const wrap = $("#ov-topics");
+    if (!wrap || !TOPICS) return;
+    wrap.innerHTML = "";
+    TOPICS.forEach((t, i) => {
+      const row = document.createElement("div");
+      row.className = "ov-topic";
+      const pri = (t.priority || "").toLowerCase();
+      row.innerHTML =
+        `<span class="ov-rank">${i + 1}</span>
+         <div class="ov-topic-main">
+           <div class="ov-topic-title">${t.title}</div>
+           <div class="ov-pri"><span class="ov-dot ${pri}"></span>${t.priority} priority · ${t.cards} cards</div>
+         </div>
+         ${sparkSvg(t.spark)}
+         <span class="ov-chev">›</span>`;
+      row.addEventListener("click", () => goToSummary(t.summaryIndex));
+      wrap.appendChild(row);
+    });
+  }
+  function sparkSvg(data) {
+    if (!data || !data.length) return "";
+    const w = 84, h = 30, pad = 3;
+    const min = Math.min(...data), max = Math.max(...data);
+    const span = max - min || 1;
+    const step = (w - pad * 2) / (data.length - 1);
+    const pts = data.map((v, i) => {
+      const x = pad + i * step;
+      const y = h - pad - ((v - min) / span) * (h - pad * 2);
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    });
+    const last = pts[pts.length - 1].split(",");
+    return `<svg class="ov-spark" viewBox="0 0 ${w} ${h}">` +
+      `<polyline points="${pts.join(" ")}"></polyline>` +
+      `<circle cx="${last[0]}" cy="${last[1]}" r="2.5"></circle></svg>`;
+  }
+  function goToSummary(index) {
+    $$(".tab").forEach((t) => t.classList.toggle("active", t.dataset.view === "summary"));
+    $$(".view").forEach((s) => s.classList.remove("active"));
+    $("#view-summary").classList.add("active");
+    $$("#summary-list .sum-item").forEach((it) => {
+      it.classList.toggle("open", Number(it.dataset.idx) === index);
+    });
+    const target = $(`#summary-list .sum-item[data-idx="${index}"]`);
+    if (target) {
+      const top = target.getBoundingClientRect().top + window.pageYOffset - 72;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    } else {
+      window.scrollTo(0, 0);
+    }
   }
 
   /* ---------------- SUMMARY ---------------- */
   function renderSummary() {
     const wrap = $("#summary-list");
     wrap.innerHTML = "";
-    SUMMARY.forEach((s) => {
+    SUMMARY.forEach((s, i) => {
       const item = document.createElement("div");
       item.className = "sum-item";
+      item.dataset.idx = i;
       item.innerHTML =
         `<button class="sum-head">${s.title}<span class="sum-chevron">›</span></button>
          <div class="sum-body">${s.html}</div>`;
@@ -95,6 +196,8 @@
     $("#flash-prev").addEventListener("click", () => move(-1));
     $("#flash-next").addEventListener("click", () => move(1));
     $("#flash-shuffle").addEventListener("click", shuffleDeck);
+    $("#rate-learning").addEventListener("click", () => rateCard("learning"));
+    $("#rate-got").addEventListener("click", () => rateCard("got"));
   }
   function showCard() {
     const card = FLASHCARDS[deck[idx]];
@@ -105,6 +208,19 @@
       $("#flash-back").textContent = card.back;
     }, 90);
     $("#flash-counter").textContent = `${idx + 1} / ${deck.length}`;
+    showStatus();
+  }
+  function rateCard(status) {
+    setCardStatus(deck[idx], status);
+    move(1);
+  }
+  function showStatus() {
+    const el = $("#flash-status");
+    if (!el) return;
+    const s = getCardStatus(deck[idx]);
+    if (s === "got") { el.textContent = "✓ Got it"; el.className = "flash-status got"; }
+    else if (s === "learning") { el.textContent = "↻ Still learning"; el.className = "flash-status learning"; }
+    else { el.textContent = ""; el.className = "flash-status"; }
   }
   function move(d) {
     idx = (idx + d + deck.length) % deck.length;
@@ -335,6 +451,7 @@
     renderQuiz();
     renderCalc();
     renderBoard();
+    renderOverview();
   }
 
   document.addEventListener("DOMContentLoaded", () => {
