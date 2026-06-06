@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M&amp;A Study App · HSLU MSc B&amp;F</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============ NAME GATE ============ -->
+  <div id="gate" class="gate">
+    <div class="gate-card">
+      <div class="gate-logo">M&amp;A</div>
+      <h1>Mergers &amp; Acquisitions</h1>
+      <p class="gate-sub">HSLU · MSc Banking &amp; Finance · FS26 — Study App</p>
+      <p class="gate-instr">Enter your name to start studying and to appear on the leaderboard.</p>
+      <form id="gate-form" autocomplete="off">
+        <input id="gate-name" type="text" maxlength="24" placeholder="Your name…" required />
+        <button type="submit">Enter →</button>
+      </form>
+      <p id="gate-error" class="gate-error" hidden>Please enter a name.</p>
+    </div>
+    <footer class="gate-foot">45 min · closed book · 10 MC (choose 2 of 5) + 5 calculations · 40 points</footer>
+  </div>
+
+  <!-- ============ APP SHELL ============ -->
+  <div id="app" class="app" hidden>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">M&amp;A</span> Study App</div>
+      <nav class="tabs">
+        <button class="tab active" data-view="summary">Summary</button>
+        <button class="tab" data-view="flash">Flashcards</button>
+        <button class="tab" data-view="quiz">MC Quiz</button>
+        <button class="tab" data-view="calc">Calculations</button>
+        <button class="tab" data-view="board">Leaderboard</button>
+      </nav>
+      <div class="user">
+        <span id="user-name" class="user-name"></span>
+        <span id="user-score" class="user-score">0 pts</span>
+        <button id="logout" class="logout" title="Switch user">⎋</button>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- SUMMARY -->
+      <section id="view-summary" class="view active">
+        <div class="view-head">
+          <h2>Course Summary</h2>
+          <p>Everything from the M&amp;A lecture, grouped by topic. Click a card to expand.</p>
+        </div>
+        <div id="summary-list" class="summary-list"></div>
+      </section>
+
+      <!-- FLASHCARDS -->
+      <section id="view-flash" class="view">
+        <div class="view-head">
+          <h2>Flashcards</h2>
+          <p>Click the card to flip. Use the arrows to move through the deck.</p>
+        </div>
+        <div class="flash-wrap">
+          <div id="flashcard" class="flashcard">
+            <div class="flashcard-inner">
+              <div class="flashcard-face flashcard-front"><span id="flash-front"></span></div>
+              <div class="flashcard-face flashcard-back"><span id="flash-back"></span></div>
+            </div>
+          </div>
+          <div class="flash-controls">
+            <button id="flash-prev" class="btn-ghost">← Prev</button>
+            <span id="flash-counter" class="flash-counter">1 / 1</span>
+            <button id="flash-next" class="btn-ghost">Next →</button>
+          </div>
+          <button id="flash-shuffle" class="btn-ghost small">⤮ Shuffle</button>
+        </div>
+      </section>
+
+      <!-- MC QUIZ -->
+      <section id="view-quiz" class="view">
+        <div class="view-head">
+          <h2>Multiple-Choice Quiz</h2>
+          <p>Exam format: choose the <strong>2 correct</strong> answers of 5. You score the 2 points
+             only if both are right. Worth 20 points in the exam.</p>
+        </div>
+        <div id="quiz-list" class="quiz-list"></div>
+        <div class="quiz-actions">
+          <button id="quiz-submit" class="btn-primary">Check answers</button>
+          <button id="quiz-reset" class="btn-ghost">Reset</button>
+          <span id="quiz-result" class="quiz-result"></span>
+        </div>
+      </section>
+
+      <!-- CALCULATIONS -->
+      <section id="view-calc" class="view">
+        <div class="view-head">
+          <h2>Calculation / Fill-in Questions</h2>
+          <p>Type your numeric answer and check it. These mirror the 5 calculation questions
+             (4 points each) in the exam.</p>
+        </div>
+        <div id="calc-list" class="calc-list"></div>
+        <div class="quiz-actions">
+          <span id="calc-result" class="quiz-result"></span>
+        </div>
+      </section>
+
+      <!-- LEADERBOARD -->
+      <section id="view-board" class="view">
+        <div class="view-head">
+          <h2>Leaderboard</h2>
+          <p>Best total score (MC + Calculations) per person, saved on this device.</p>
+        </div>
+        <table class="board">
+          <thead><tr><th>#</th><th>Name</th><th>Best score</th><th>Max</th></tr></thead>
+          <tbody id="board-body"></tbody>
+        </table>
+        <p class="board-note">Scores are stored locally in your browser (localStorage). Share the
+           link and each person enters their own name to build the ranking on their device.</p>
+        <button id="board-clear" class="btn-ghost small">Clear leaderboard</button>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
